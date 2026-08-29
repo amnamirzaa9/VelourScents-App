@@ -1,77 +1,96 @@
 <%-include('partials/header',{activepage:'',title:'cart',cartcount:cartcount})%>
 <!-- cart section -->
-
 <% if (subtotal != 0) { %>
 
     <h2 class="section-heading fs-2 text-uppercase">
         Your Cart
     </h2>
 
-    <!-- cart -->
-    <div class="container d-flex flex-column justify-content-center w-75 gap-3" style="min-height:500px">
+    <div class="container mb-5 " style="min-height: 500px;">
 
-        <div class="row g-3">
+        <div class="row g-4 align-items-start ">
 
-            <!-- Cart Table -->
-            <div class="col-md-6">
+            <!-- Cart Items -->
+            <div class="col-12 col-lg-7">
 
-                <div class="table-responsive h-100 cart-table">
+                <div class="cart-table">
 
-                    <table class="table borderless">
+                    <% cart.forEach((item, i) => { %>
 
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                            </tr>
-                        </thead>
+                        <div class="card border-0 shadow-sm mb-3">
 
-                        <tbody>
+                            <div class="card-body py-3">
 
-                            <% cart.forEach((item, i) => { %>
+                                <div class="row align-items-center">
 
-                                <tr>
+                                    <!-- Number -->
+                                    <div class="col-2 col-sm-1 text-center">
+                                        <span class="fw-semibold">
+                                            <%= i + 1 %>
+                                        </span>
+                                    </div>
 
-                                    <th scope="row">
-                                        <%= i + 1 %>
-                                    </th>
+                                    <!-- Product -->
+                                    <div class="col-10 col-sm-4">
+                                        <div class="card-text fw-semibold">
+                                            <%= item.name %>
+                                        </div>
+                                    </div>
 
-                                    <td class="card-text">
-                                        <%= item.name %>
-                                    </td>
+                                    <!-- Price -->
+                                    <div class="col-4 col-sm-2 text-center">
+                                        <small class="text-muted d-block">
+                                            Price
+                                        </small>
+                                        <span class="card-text text-nowrap">
+                                            Rs. <%= item.price %>
+                                        </span>
+                                    </div>
 
-                                    <td class="card-text">
-                                        Rs. <%= item.price %>
-                                    </td>
+                                    <!-- Quantity -->
+                                    <div class="col-4 col-sm-2 text-center">
+                                        <small class="text-muted d-block">
+                                            Quantity
+                                        </small>
+                                        <span class="card-text">
+                                            <%= item.quantity %>
+                                        </span>
+                                    </div>
 
-                                    <td class="card-text">
-                                        <%= item.quantity %>
-                                    </td>
+                                    <!-- Total -->
+                                    <div class="col-4 col-sm-2 text-center">
+                                        <small class="text-muted d-block">
+                                            Total
+                                        </small>
+                                        <span class="card-text fw-semibold text-nowrap">
+                                            Rs. <%= item.price * item.quantity %>
+                                        </span>
+                                    </div>
 
-                                    <td class="card-text">
-                                        Rs. <%= item.price * item.quantity %>
-                                    </td>
+                                    <!-- Remove -->
+                                    <div class="col-12 col-sm-1 text-center">
 
-                                    <td>
                                         <form action="/remove-from-cart/<%= i %>" method="POST">
 
-                                            <button type="submit" class="btn btn-sm border-0">
+                                            <button type="submit"
+                                                    class="btn btn-sm border-0"
+                                                    aria-label="Remove item">
+
                                                 <i class="bi bi-x-circle"></i>
+
                                             </button>
 
                                         </form>
-                                    </td>
 
-                                </tr>
+                                    </div>
 
-                            <% }) %>
+                                </div>
 
-                        </tbody>
+                            </div>
 
-                    </table>
+                        </div>
+
+                    <% }) %>
 
                 </div>
 
@@ -79,21 +98,21 @@
 
 
             <!-- Cart Summary -->
-            <div class="col-md-6">
+            <div class="col-12 col-lg-5">
 
-                <div class="card h-100 cart-summary-card">
+                <div class="card border-0 shadow-sm cart-summary-card">
 
-                    <div class="card-body">
+                    <div class="card-body p-4">
 
-                        <h5 class="card-title">
+                        <h5 class="card-title mb-4">
                             Cart Summary
                         </h5>
 
-                        <p class="card-text">
+                        <p class="card-text mb-3">
                             Rs. <%= subtotal %>
                         </p>
 
-                        <p class="card-text">
+                        <p class="card-text mb-4">
                             Shipping :
                             <%= subtotal > 5000
                                 ? 'Free Delivery'
@@ -101,10 +120,7 @@
                             %>
                         </p>
 
-                        <p class="card-text">
-                        </p>
-
-                        <a href="/checkout" class="btn btn-checkout">
+                        <a href="/checkout" class="btn btn-checkout w-100">
                             Proceed to Checkout
                         </a>
 
@@ -127,7 +143,8 @@
         Your Cart
     </h2>
 
-    <div class="container d-flex justify-content-center align-items-center w-75" style="min-height:500px">
+    <div class="container d-flex justify-content-center align-items-center w-75"
+         style="min-height:500px">
 
         <div class="row w-100 justify-content-center">
 
@@ -160,6 +177,7 @@
     </div>
 
 <% } %>
+
 
 <%-include('partials/footer')%>
  
