@@ -1,0 +1,96 @@
+<%-include('partials/header',{activepage:'home',title:'VelourScents',cartcount:cartcount})%>
+<!--hero-section-->
+<div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2000">
+      <img src="images/collection.jpg" class="d-block w-100" alt="...">
+       
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="images/floralwhisperbanner.jpg" class="d-block w-100" alt="...">
+       
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="images/obsxbanner.jpg" class="d-block w-100" alt="...">
+       
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!--category cards-->
+<h2 class="section-heading">Shop by Category</h2>
+<div class="row g-3 category-container">
+    <div class="col-4 text-center category-card">
+      <img src="images/womencategory.png" class="rounded-circle category-image" alt="..." >
+      <a href="/shop#women">
+      <button type="button" class="btn btn-checkout mt-3  category-button button-style ">Women</button>
+      </a>
+     </div>
+     
+    
+    <div class="col-4 text-center category-card">
+          <img src="images/men-category.jpg" class="rounded-circle category-image" alt="..." >
+          <a href="/shop#men">
+          <button type="button" class="btn btn-checkout mt-3  category-button button-style ">Men</button>
+          </a>
+     </div>
+    
+    <div class="col-4 text-center category-card">
+      <img src="images/new-arrivalsbanner2.png" class="rounded-circle category-image" alt="..." >
+      <a href="/shop#new-arrivals">
+      <button type="button" class="btn btn-checkout mt-3 button-style category-button">New Arrivals</button>
+      </a>
+    </div>
+    
+  </div>
+<!--top sellers-->
+<h2 class="section-heading mt-5" >Top Sellers</h2>
+<div class="row g-4 mb-4" id="products-container">
+    <% bestsellers.forEach(product => { %>
+        <div class="col-6 col-md-4 product-card"
+         data-price="<%= product.price %>"
+         data-name="<%= product.name %>">
+            <div class="card h-100">
+                <a href="/product-detail/<%= product._id %>" class="text-decoration-none text-dark">
+                    <img src="/<%= product.image %>" class="card-img-top" alt="<%= product.name %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= product.name %></h5>
+                        <p class="card-text">Rs. <%= product.price %></p>
+                       
+                    </div>
+                </a>
+                <div class="card-body pt-0">
+                    <form action="/add-to-cart/<%= product._id %>" method="POST">
+                        
+                        <button type="submit" class="btn btn-light text-dark border border-dark cart-text w-100">
+                            Add to Cart
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>
+
+ 
+</div>
+
+<%-include('partials/footer')%>
+
+
+
+
+
+      
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  
+</body>
+</html>

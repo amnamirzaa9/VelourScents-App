@@ -1,0 +1,89 @@
+<!--footer-->
+<div class="row custom-footer p-4">
+    <div class="col-12 d-flex  flex-column col-sm-6 col-md-4 ">
+      <div class="div">
+         <h6 class="text-uppercase mt-3">Brand</h6>  
+    <img src="/images/velour_scents_flower_icon.svg" alt="Velour Scents" height="30">
+    Velour Scents
+    </div>
+<div class="d-flex gap-3">
+    <a href="#" class="text-dark fs-6"><i class="bi bi-facebook"></i></a>
+    <a href="#" class="text-dark fs-6"><i class="bi bi-instagram"></i></a>
+    <a href="#" class="text-dark fs-6"><i class="bi bi-globe"></i></a>
+</div>
+     
+    </div>
+    <div class="col-12 d-flex  flex-column col-sm-6 col-md-4">
+        <h6 class="text-uppercase mt-3">Shop</h6>
+      <a href="/shop#women" class="text-dark fs-6 text-decoration-none ">Women</a>
+    <a href="/shop#men" class="text-dark fs-6 text-decoration-none ">Men</a>
+    <a href="/shop#new-arrivals" class="text-dark fs-6 text-decoration-none ">New Arrivals</a>
+     <a href="#" class="text-dark fs-6 text-decoration-none ">Top sellers</a>
+     
+    </div>
+    <div class="col-12 d-flex  flex-column col-sm-6 col-md-4">
+        <h6 class="text-uppercase mt-3">Support</h6>
+      <a href="/aboutus" class="text-dark fs-6 text-decoration-none ">About us</a>
+    <a href="/contact" class="text-dark fs-6 text-decoration-none ">Contact</a>
+    <a href="/faq" class="text-dark fs-6 text-decoration-none ">FAQs</a>
+     <a href="/shipping-returns" class="text-dark fs-6 mb-3 text-decoration-none ">Shipping & Returns</a>
+     </div>
+   
+  </div>
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"> <div class="col-md-4 d-flex align-items-center"> <span class="mb-3 mb-md-0 text-body-secondary">© 2026 Velour Scents. All rights reserved.</span> </div>  </footer>
+<script>
+// ── LOGIN FORM ──
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    const errorMsg = document.getElementById('loginError');
+
+    try {
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            bootstrap.Modal.getInstance(document.getElementById('authmodal')).hide();
+            window.location.reload();
+        } else {
+            errorMsg.textContent = data.error;
+            errorMsg.style.display = 'block';
+        }
+    } catch (err) {
+        errorMsg.textContent = 'Something went wrong. Please try again.';
+        errorMsg.style.display = 'block';
+    }
+});
+
+// ── REGISTER FORM ──
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const errorMsg = document.getElementById('registerError');
+
+    try {
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            bootstrap.Modal.getInstance(document.getElementById('signupmodal')).hide();
+            window.location.reload();
+        } else {
+            errorMsg.textContent = data.error;
+            errorMsg.style.display = 'block';
+        }
+    } catch (err) {
+        errorMsg.textContent = 'Something went wrong. Please try again.';
+        errorMsg.style.display = 'block';
+    }
+});
+</script>

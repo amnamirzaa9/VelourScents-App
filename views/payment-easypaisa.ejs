@@ -1,0 +1,72 @@
+<%- include('partials/header', { activePage: '', title: 'Easypaisa Payment', cartcount: cartcount, user: user }) %>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+
+      <!-- Header -->
+      <div class="d-flex align-items-center gap-3 p-3 rounded-3 mb-4" style="background-color: #3BB54A;">
+        <i class="bi bi-phone-fill text-white fs-2"></i>
+        <div>
+          <h4 class="text-white mb-0">Easypaisa</h4>
+          <small class="text-white-50">Mobile wallet payment</small>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+          <p class="text-muted small mb-1">Amount to pay</p>
+          <h3 class="section-heading mb-0">Rs. <%= subtotal %></h3>
+        </div>
+      </div>
+
+      <!-- Form -->
+       <form action="/confirm-order" class="needs-validation" method="post">
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label text-muted small">Mobile Number</label>
+            <input type="text" class="form-control" placeholder="03XX-XXXXXXX">
+          </div>
+          <div class="mb-3">
+            <label class="form-label text-muted small">MPIN</label>
+            <input type="password" class="form-control" placeholder="Enter your MPIN">
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirm Button -->
+      
+        <button type="submit" class="btn w-100 text-white py-3" style="background-color: #3BB54A; border-radius: 10px;">
+          Pay Rs. <%= subtotal %>
+        </button>
+      
+</form>
+      <a href="/checkout" class="btn btn-link text-muted d-block text-center mt-3">← Go back</a>
+
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(()=>{
+  'use strict';
+  const forms=document.querySelectorAll('.needs-validation');
+  Array.from(forms).forEach(form=>{
+    form.addEventListener('submit',event=>{
+      if(!form.checkValidity()){
+         event.preventDefault();
+                event.stopPropagation();
+      }
+      form.classList.add('was-validated')
+    })
+  })
+
+})();
+</script>
+</body>
+</html>

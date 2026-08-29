@@ -1,0 +1,149 @@
+<%-include('partials/header',{activepage:'',title:'OrderConfirmation',cartcount:cartcount , user:user})%>
+
+ <div class="container py-5">
+
+  <div class="text-center mb-5">
+
+    <div class="mb-3">
+      <span class="text-success fs-1">✓</span>
+    </div>
+
+    <h1 class="fw-bold">Order Confirmed!</h1>
+
+    <p class="text-muted">
+      Thank you for your order.
+    </p>
+
+    <p>
+      Your order has been successfully placed.
+    </p>
+
+  </div>
+
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-7">
+
+      <div class="card shadow-sm">
+
+        <div class="card-body p-4">
+
+          <h4 class="mb-4">Order Summary</h4>
+
+          <!-- Products -->
+          <% newOrder.items.forEach(item => { %>
+
+            <div class="d-flex justify-content-between mb-3">
+
+              <div>
+                <h6 class="mb-1">
+                  <%= item.name %>
+                </h6>
+
+                <small class="text-muted">
+                  Quantity: <%= item.quantity %>
+                </small>
+              </div>
+
+              <span>
+                Rs.<%= item.price * item.quantity %>
+              </span>
+
+            </div>
+
+          <% }) %>
+
+
+          <hr>
+
+
+          <div class="d-flex justify-content-between">
+            <span>Subtotal</span>
+            <span>Rs.<%= newOrder.subtotal %></span>
+          </div>
+
+
+          <div class="d-flex justify-content-between mt-2">
+            <span>Shipping</span>
+            <% let shipping=newOrder.subtotal<5000?250:0;
+            let total=newOrder.subtotal+shipping%>
+            <span class="text-success"><%=shipping%></span>
+          </div>
+
+
+          <hr>
+
+
+          <div class="d-flex justify-content-between fw-bold fs-5">
+            <span>Total</span>
+            <span>Rs.<%=total%></span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Shipping information -->
+
+      <div class="card shadow-sm mt-4">
+
+        <div class="card-body p-4">
+
+          <h4 class="mb-4">Shipping Information</h4>
+
+          <p class="mb-1">
+            <strong>Name:</strong>
+            <%= newOrder.shipping.firstname %>
+            <%= newOrder.shipping.lastname %>
+          </p>
+
+          <p class="mb-1">
+            <strong>Phone:</strong>
+            <%= newOrder.shipping.phonenumber %>
+          </p>
+
+          <p class="mb-1">
+            <strong>Address:</strong>
+            <%= newOrder.shipping.address %>
+          </p>
+
+          <p class="mb-1">
+            <strong>City:</strong>
+            <%= newOrder.shipping.city %>
+          </p>
+
+          <p class="mb-1">
+            <strong>Postal Code:</strong>
+            <%= newOrder.shipping.code %>
+          </p>
+          <p class="mb-1">
+    <strong>Payment Method:</strong>
+    <%= newOrder.shipping.paymentMethod %>
+</p>
+
+        </div>
+
+      </div>
+
+
+      <div class="text-center mt-4">
+
+        <a href="/" class="btn btn-checkout btn-lg">
+          Continue Shopping
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<%-include('partials/footer')%>
+</div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  
+</body>
+</html>

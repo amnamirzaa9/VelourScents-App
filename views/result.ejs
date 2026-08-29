@@ -1,0 +1,68 @@
+<%-include('partials/header',{activepage:'',title:'ScentIQ-Result',cartcount:cartcount})%>
+<!-- Include Font Awesome for icons if not already in your header -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-dark">Your Best Matches</h1>
+    <p class="lead text-muted">Based on your preferences, here are your top 3 fragrance recommendations.</p>
+  </div>
+
+  <div id="top-container" class="row g-4 justify-content-center">
+    <% top.forEach((item, index) => { %>
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 border-0 shadow-sm rounded-4 position-relative overflow-hidden style-card">
+          
+          <!-- Top Rank Tag -->
+          <div class="position-absolute top-0 end-0 text-white px-3 py-1 rounded-bottom-start fs-7 fw-bold" style="background-color: var(--brand-accent);">
+            #<%= index + 1 %> Match
+          </div>
+
+          <div class="card-body p-4 d-flex flex-column">
+            
+            <!-- Product Title & Price -->
+            <div class="mb-3">
+              <h3 class="fw-bold mb-1 text-capitalize"><%= item.product.name %></h3>
+              <span class="fs-5 fw-semibold card-text">Rs. <%= item.product.price %></span>
+            </div>
+
+            <!-- Match Score Badge -->
+            <div class="p-3 mb-4 rounded-3 bg-light border border-1 d-flex align-items-center justify-content-between">
+              <span class="fw-semibold text-secondary">Scent Compatibility</span>
+              <span class="badge fs-6 px-3 py-2 rounded-pill" style="background-color: var(--brand-accent);">
+                <i class="fa-solid fa-bolt me-1"></i> <%= item.score %>%
+              </span>
+            </div>
+
+            <!-- Reasons Section -->
+            <div class="flex-grow-1">
+              <h6 class="fw-bold text-uppercase text-muted fs-7 mb-3">Why this works for you:</h6>
+              <ul class="list-unstyled mb-4">
+                <% item.results.forEach((reason) => { %>
+                  <li class="d-flex align-items-start mb-2">
+                    <span class="text-success me-2 fs-6">
+                      <i class="fa-solid fa-circle-check"></i>
+                    </span>
+                    <span class="text-dark fs-6"><%= reason %></span>
+                  </li>
+                <% }); %>
+              </ul>
+            </div>
+
+            <!-- Action Button -->
+            <a href="/product-detail/<%= item.product._id %>" class="btn btn-checkout w-100 py-2 rounded-3 fw-semibold">
+              View Product Details <i class="fa-solid fa-arrow-right ms-2"></i>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</section>
+<!-- Position Option: Placed below the header or at the bottom of the section -->
+<div class="text-center mt-5">
+  <a href="/quiz" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-semibold border-2">
+    <i class="fa-solid fa-rotate-left me-2"></i> Retake Scent Quiz
+  </a>
+</div>
