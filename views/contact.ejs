@@ -15,15 +15,16 @@
   <form action="/contact" method="POST" id="contactForm" >
     <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label contact-text">Name</label>
-  <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Enter your full name" required>
+  <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Enter your full name" pattern="^[a-zA-Z\s]{2,50}$" required>
 </div>
  <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label contact-text">Email</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your email address" name="email" required>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your email address" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
 </div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label contact-text">Message</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message" placeholder="Write your message or inquiry here..." required></textarea>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message" placeholder="Write your message or inquiry here..." 
+      maxlength="1000" required></textarea>
 </div>
 <button type="submit" class="btn btn-light border border-dark mb-3 contact-text">Submit</button>
   </form>
