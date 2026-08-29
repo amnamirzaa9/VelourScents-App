@@ -71,7 +71,7 @@ router.get(`/shop`,async(req,res)=>{
                return res.redirect('/');
            }
        console.log("Searched:", searchedproduct);
-     const products = await product.find({
+     const products = await Product.find({
                name: { $regex: searchedproduct, $options: 'i' }
            });
    
