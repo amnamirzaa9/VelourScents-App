@@ -9,7 +9,7 @@
  
    app.use(express.urlencoded({ extended: true }));
 const session = require("express-session");
- const PORT_NUMBER=3000;
+ const PORT_NUMBER = process.env.PORT || 3000;
   app.listen(PORT_NUMBER,()=>console.log(`server started on http://localhost:${PORT_NUMBER}`));
 
  app.set(`view engine`,`ejs`);
