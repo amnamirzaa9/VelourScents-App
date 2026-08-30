@@ -1,7 +1,7 @@
 const mongoose=require(`mongoose`);
 exports.connectdb=async ()=>{
   try{
-    await mongoose.connect("mongodb+srv://amnamirzaa9_db_user:PgudAMKbzvMacovn@cluster0.059j3hg.mongodb.net/?appName=Cluster0");
+    await mongoose.connect(process.env.MONGO_URI); 
     console.log("mongoDB connected");
   }
   catch(err){
