@@ -236,7 +236,7 @@ Top 3 scoring products are returned with match percentage and natural language e
 
 ## 📸 Screenshots
 
-![Homepage](screenshots/homepage.png)
+![Homepage](screenshots/home.png)
 ![Shop Page](screenshots/shop.png)
 ![ScentIQ Quiz](screenshots/quiz.png)
 ![Order Confirmation](screenshots/orderconfirmation.png)
