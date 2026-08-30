@@ -8,7 +8,7 @@ A full-stack e-commerce web application for a Pakistani perfume brand, built as 
 
 ## 🚀 Live Demo
 
-> Coming soon after deployment
+> https://velourscents-app.onrender.com
 
 ---
 
