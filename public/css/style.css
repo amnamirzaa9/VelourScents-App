@@ -436,12 +436,14 @@ a.card-text {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .category-image {
     width: 200px;
     height: 200px;
     object-fit: cover;
+    
 }
 
 @media (max-width: 767px) {
@@ -450,16 +452,16 @@ a.card-text {
     }
 
     .category-image {
-        width: 105px;
-        height: 105px;
+        width: 100px;
+        height: 100px;
     }
 
     .category-button {
         width: 100px;
-        height: 42px;
+        height: 27px;
         margin-top: 8px;
-        padding: 5px 5px;
-        font-size: 0.8rem;
+        padding: 6px 0; 
+        font-size: 0.75rem;
     }
 
     .product-card .card-img-top {
