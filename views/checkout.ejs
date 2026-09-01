@@ -10,19 +10,19 @@
             <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
               <input type="text" class="form-control" name="firstname" id="firstName" minlength="2" maxlength="30"  pattern="[A-Za-z]+(?:\s+[A-Za-z]+)*" required>
-              <div class="invalid-feedback">Valid first name is required.</div>
+              <div class="invalid-feedback">Valid first name is required and cannot contain numbers,spaces or special characters.</div>
             </div>
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Last name</label>
               <input type="text" class="form-control" name="lastname" id="lastName" minlength="2" maxlength="30"  pattern="[A-Za-z]+(?:\s+[A-Za-z]+)*" required>
-              <div class="invalid-feedback">Valid last name is required.</div>
+              <div class="invalid-feedback">Valid last name is required and cannot contain numbers,spaces or special characters.</div>
             </div>
 
             <div class="col-sm-6">
               <label for="phonenumber" class="form-label">Phone Number</label>
               <input type="tel" class="form-control" name="phonenumber" id="phonenumber"  placeholder="03XXXXXXXXX" pattern="03[0-9]{9}" required>
-              <div class="invalid-feedback">Valid phone number is required.</div>
+              <div class="invalid-feedback">Valid phone number is required and must be a valid Pakistani phone number.</div>
             </div>
 
             <div class="col-12">
@@ -49,7 +49,7 @@
             <div class="col-md-3">
               <label for="postal-code" class="form-label">Postal Code (optional)</label>
               <input type="text" class="form-control" name="code" pattern="[0-9]{5}" id="postal-code">
-              <div class="invalid-feedback">Zip code required.</div>
+              <div class="invalid-feedback">Enter a valid postal code(5-digits)</div>
             </div>
           </div>
 
