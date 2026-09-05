@@ -17,7 +17,13 @@
       <div class="card border-0 shadow-sm mb-4">
         <div class="card-body">
           <p class="text-muted small mb-1">Amount to pay</p>
-          <h3 class="section-heading mb-0">Rs. <%= subtotal %></h3>
+          <% let total=subtotal%>
+          <% if(subtotal<5000){
+            total=subtotal+250;%>
+            <h3 class="section-heading mb-0">Rs. <%= total %></h3>
+          <%}else{%>
+            <h3 class="section-heading mb-0">Rs. <%= subtotal %></h3>
+          <%}%>
         </div>
       </div>
 
@@ -40,7 +46,7 @@
       <!-- Confirm Button -->
       
         <button type="submit" class="btn w-100 text-white py-3" style="background-color: #CC0000; border-radius: 10px;">
-          Pay Rs. <%= subtotal %>
+          Pay Rs. <%= total %>
         </button>
         </form>
 

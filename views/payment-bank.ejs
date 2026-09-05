@@ -17,8 +17,14 @@
       <!-- Order Summary -->
       <div class="card border-0 shadow-sm mb-4">
         <div class="card-body">
-          <p class="text-muted small mb-1">Amount to transfer</p>
-          <h3 class="section-heading mb-0">Rs. <%= subtotal %></h3>
+          <p class="text-muted small mb-1">Amount to pay</p>
+          <% let total=subtotal%>
+          <% if(subtotal<5000){
+            total=subtotal+250;%>
+            <h3 class="section-heading mb-0">Rs. <%= total %></h3>
+          <%}else{%>
+            <h3 class="section-heading mb-0">Rs. <%= subtotal %></h3>
+          <%}%>
         </div>
       </div>
 
@@ -45,7 +51,7 @@
           <hr>
           <div class="d-flex justify-content-between">
             <span class="text-muted small">Amount</span>
-            <span class="fw-500 small">Rs. <%= subtotal %></span>
+            <span class="fw-500 small">Rs. <%= total %></span>
           </div>
         </div>
       </div>
